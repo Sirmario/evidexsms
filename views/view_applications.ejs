@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        tr,td,th{border:1px solid gray;}
+    </style>
+  </head>
+  <body>
+    <%-include("partials/header")%>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>s/n</th>
+            <th>Application No</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Registration Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%applicants.forEach((app,i)=>{%>
+            <tr>
+            <td><%= i+1%></td>
+            <td><%= app.app_no%></td>
+            <td><%= app.firstname%></td>
+            <td><%= app.lastname%></td>
+            <td><%= app.email%></td>
+            <td><%= app.address%></td>
+            <td><%= app.status%></td>
+            <td><%= app.timestamp%></td>
+            <td>
+              <a href="">view</a>
+              <a href="/application/approve/<%=app.app_no%>">Approve</a>
+              <a href="">Reject</a>
+            </td>
+          </tr>
+
+            <%})%>
+         
+        </tbody>
+      </table>
+    </main>
+    <%-include("partials/footer")%>
+  </body>
+  
+</html>
