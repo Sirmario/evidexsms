@@ -36,12 +36,12 @@
             <td><%= app.lastname%></td>
             <td><%= app.email%></td>
             <td><%= app.address%></td>
-            <td><%= app.status%></td>
+            <td><%= app.status == "approved" ? "🟢" : app.status == "rejected" ? "🔴" : "🟡" %></td>
             <td><%= app.timestamp%></td>
             <td>
-              <a href="">view</a>
+              <a href="/application/view/<%=app.app_no%>">view</a>
               <a href="/application/approve/<%=app.app_no%>">Approve</a>
-              <a href="">Reject</a>
+              <a href="/application/reject/<%=app.app_no%>">Reject</a>
             </td>
           </tr>
 
