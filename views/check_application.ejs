@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+  </head>
+
+  <body>
+    <%-include("partials/header")%>
+    <h1>Check your Application Status</h1>
+    <form id="form">
+      <input
+        type="text"
+        placeholder="Check Admission Status"
+        name="applicationNo"
+      />
+      <button>Check</button>
+    </form>
+    <%-include("partials/footer")%>
+    <script>
+      let formEl = document.getElementById("form");
+      formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let appNo = Object.fromEntries(new FormData(e.target));
+        checkApplication(appNo);
+      });
+      async function checkApplication(appNo) {
+        try {
+          let res = await fetch("/check-application", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(appNo),
+          });
+          let data = await res.json();
+          createUI(data);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      function createUI(data) {
+        // let message = data.status == "approved" ?
+        alert(data.message);
+      }
+    </script>
+  </body>
+</html>

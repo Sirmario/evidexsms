@@ -9,7 +9,12 @@
     <h1>Application</h1>
     <main>
       <div class="application">
-        <form action="/application" method="post">
+        <form action="/application/update" method="post">
+          <input
+            type="hidden"
+            name="applicationNo"
+            value="<%=applicant.app_no%>"
+          />
           <div class="form-field">
             <label for="firstname">Firstname</label>
             <input
