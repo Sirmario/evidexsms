@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+  </head>
+
+  <body>
+    <%-include("partials/header")%>
+
+    <main>
+      <h1>Register User</h1>
+      <div class="application">
+        <form action="/auth/register" method="post">
+          <div class="form-field">
+            <label for="firstname">Firstname</label>
+            <input
+              type="text"
+              placeholder="Firstname"
+              name="firstname"
+              id="firstname"
+            />
+          </div>
+          <div class="form-field">
+            <label for="lastname">Lastname</label>
+            <input
+              type="text"
+              placeholder="Lastname"
+              name="lastname"
+              id="lastname"
+            />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" placeholder="Email" name="email" id="email" />
+          </div>
+          <div class="form-field">
+            <label for="address">Role</label>
+            <select name="role" id="">
+              <option value="teacher">Teacher</option>
+              <option value="staff">Staff</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="address">Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+            />
+          </div>
+
+          <button>Register</button>
+        </form>
+      </div>
+    </main>
+    <%-include("partials/footer")%>
+  </body>
+</html>

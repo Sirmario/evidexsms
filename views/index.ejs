@@ -7,6 +7,12 @@
   <body>
     <%-include("partials/header")%>
     <h1>Welcome to EVIDEX SMS</h1>
+    <h1>Total Applicants: <%=applicants.length%></h1>
+
+    <h1>
+      Total Admitted: <%=applicants.filter(app=> app.status ==
+      "approved").length%>
+    </h1>
 
     <%-include("partials/footer")%>
   </body>

@@ -1,4 +1,6 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
+
 const app = express();
 const applicants = [];
 app.set("view engine", "ejs");
@@ -6,7 +8,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public")); //Telling Express to use the public folder for static files like CSS, JS, and images
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.render("index", { pageTitle: "Home" });
+  res.render("index", {
+    pageTitle: "Home",
+    applicants,
+  });
 });
 app.get("/about", (req, res) => {
   res.render("about", { pageTitle: "About Us" });
@@ -17,8 +22,41 @@ app.get("/contact", (req, res) => {
 app.get("/auth/login", (req, res) => {
   res.send("<h1>Login Here</h1>");
 });
+app.get("/auth/register", (req, res) => {
+  res.render("register", { pageTitle: "User Registration" });
+});
+app.post("/auth/register", (req, res) => {
+  const { firstname, lastname, email, role, password } = req.body;
+  if (
+    firstname == "" ||
+    lastname == "" ||
+    email == "" ||
+    role == "" ||
+    password == ""
+  ) {
+    console.log("Please fill all neccessary fields!");
+    return res.redirect("/auth/register");
+  }
+  if (password.length < 6) {
+    console.log("Password too weak");
+    return res.redirect("/auth/register");
+  }
+  bcrypt.hash(password, 10, (err, hash) => {
+    if (err) return console.log("Error trying to hash password");
+    res.json({
+      firstname,
+      lastname,
+      email,
+      password: hash,
+      role,
+    });
+  });
+});
 app.get("/application", (req, res) => {
-  res.render("application", { pageTitle: "Application" });
+  res.render("application", {
+    pageTitle: "Application",
+    isApplicationActive: true,
+  });
 });
 
 app.get("/view-application", (req, res) => {
