@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+  </head>
+  <body>
+    <%-include("partials/header")%>
+
+    <main class="page-shell">
+      <section class="notice-card">
+        <span class="status-badge">Admission offered</span>
+        <h1>Congratulations! You have been offered admission.</h1>
+        <p>
+          Your application has been approved. Please review your details and
+          continue to verification to complete your enrollment.
+        </p>
+
+        <div class="details-list">
+          <div class="detail-row">
+            <span class="detail-label">Full name</span>
+            <span class="detail-value"><%=applicant.lastname%> <%=applicant.firstname%></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Application number</span>
+            <span class="detail-value"><%=applicant.app_no%></span>
+          </div>
+        </div>
+
+        <div class="notice-actions">
+          <button type="button">Print Notification Slip</button>
+          <a class="btn-secondary" href="/verify/<%=applicant.app_no%>">Proceed to Verification</a>
+        </div>
+      </section>
+    </main>
+
+    <%-include("partials/footer")%>
+  </body>
+</html>

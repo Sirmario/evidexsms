@@ -6,15 +6,27 @@
 
   <body>
     <%-include("partials/header")%>
-    <h1>Check your Application Status</h1>
-    <form id="form">
-      <input
-        type="text"
-        placeholder="Check Admission Status"
-        name="applicationNo"
-      />
-      <button>Check</button>
-    </form>
+
+    <main class="page-shell">
+      <section class="panel search-panel">
+        <p class="kicker">Check status</p>
+        <h1 class="page-heading">Track your admission status.</h1>
+        <form id="form" class="search-form">
+          <input
+            type="text"
+            placeholder="Enter application number"
+            name="applicationNo"
+            aria-label="Application number"
+          />
+          <button type="submit">Check Status</button>
+        </form>
+        <p class="search-summary">
+          Use the application number sent to you during registration to review
+          your admission result.
+        </p>
+      </section>
+    </main>
+
     <%-include("partials/footer")%>
     <script>
       let formEl = document.getElementById("form");
@@ -39,7 +51,8 @@
         }
       }
       function createUI(data) {
-        // let message = data.status == "approved" ?
+        if (data.status == "approved")
+          return (window.location.href = `/application_notification/${data.appNo}`);
         alert(data.message);
       }
     </script>

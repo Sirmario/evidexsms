@@ -6,13 +6,94 @@
 
   <body>
     <%-include("partials/header")%>
-    <h1>Welcome to EVIDEX SMS</h1>
-    <h1>Total Applicants: <%=applicants.length%></h1>
 
-    <h1>
-      Total Admitted: <%=applicants.filter(app=> app.status ==
-      "approved").length%>
-    </h1>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Admissions portal</p>
+          <h1>Shape your future with EVIDEX SMS.</h1>
+          <p>
+            Apply for admission, track your application, and stay connected with
+            your academic journey in one streamlined student management system.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/application" class="btn-primary">Apply Now</a>
+            <a href="/check-application" class="btn-secondary">Check Status</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-stack">
+            <div class="mini-card">
+              <span>Total Applicants</span>
+              <strong><%=applicants.length%></strong>
+              <em>+12% this term</em>
+            </div>
+            <div class="mini-card">
+              <span>Students Admitted</span>
+              <strong>
+                <%=applicants.filter((app) => app.status == "approved").length%>
+              </strong>
+              <em>Strong academic pool</em>
+            </div>
+            <div class="mini-card">
+              <span>Application Status</span>
+              <strong>Open</strong>
+              <em>Enrollment live</em>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stat-grid">
+        <article class="stat-card">
+          <h2>1,500+</h2>
+          <p>Students supported across departments.</p>
+        </article>
+        <article class="stat-card">
+          <h2>96%</h2>
+          <p>Student satisfaction with the admissions process.</p>
+        </article>
+        <article class="stat-card">
+          <h2>24/7</h2>
+          <p>Application monitoring and support access.</p>
+        </article>
+      </section>
+
+      <h2 class="section-heading">Why students choose EVIDEX</h2>
+      <section class="content-grid">
+        <div class="panel">
+          <h2>Modern admissions experience</h2>
+          <p>
+            We make the enrollment journey clear, student-friendly, and efficient,
+            helping applicants submit documents, verify accounts, and receive
+            updates without unnecessary delays.
+          </p>
+          <ul class="feature-list">
+            <li>Easy online application form</li>
+            <li>Quick admission tracking</li>
+            <li>Secure account verification</li>
+            <li>Responsive support experience</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>Built around success</h2>
+          <p>
+            From application to enrollment, our platform brings students, staff,
+            and administrators into a single digital workflow designed for clarity
+            and trust.
+          </p>
+          <ul class="feature-list">
+            <li>Clear communication with applicants</li>
+            <li>Smart dashboard for administrators</li>
+            <li>Reliable academic records flow</li>
+            <li>Strong digital-first operations</li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
     <%-include("partials/footer")%>
   </body>

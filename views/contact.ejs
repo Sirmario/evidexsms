@@ -5,7 +5,41 @@
   </head>
   <body>
     <%-include("partials/header")%>
-    <h1>Welcome to the About Page</h1>
+
+    <main class="page-shell">
+      <section class="panel">
+        <p class="kicker">Contact</p>
+        <h1 class="page-heading">Talk to our team.</h1>
+        <p>
+          We’re here to help with admissions questions, support, and enrollment
+          guidance. Reach out and we’ll get back to you as quickly as possible.
+        </p>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel">
+          <h2>Get in touch</h2>
+          <ul class="feature-list">
+            <li>Email: admissions@evidexsms.com</li>
+            <li>Phone: +234 800 123 4567</li>
+            <li>Location: 12 Academic Avenue, Lagos</li>
+            <li>Office hours: Mon - Fri, 8:00 AM - 5:00 PM</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>Need help?</h2>
+          <p>
+            Whether you’re checking a status, verifying your account, or preparing
+            your application, our team is ready to guide you through each step.
+          </p>
+          <div class="hero-actions">
+            <a href="/application" class="btn-primary">Start Application</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <%-include("partials/footer")%>
   </body>
 </html>

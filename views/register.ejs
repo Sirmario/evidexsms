@@ -7,54 +7,84 @@
   <body>
     <%-include("partials/header")%>
 
-    <main>
-      <h1>Register User</h1>
-      <div class="application">
-        <form action="/auth/register" method="post">
-          <div class="form-field">
-            <label for="firstname">Firstname</label>
-            <input
-              type="text"
-              placeholder="Firstname"
-              name="firstname"
-              id="firstname"
-            />
-          </div>
-          <div class="form-field">
-            <label for="lastname">Lastname</label>
-            <input
-              type="text"
-              placeholder="Lastname"
-              name="lastname"
-              id="lastname"
-            />
-          </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" placeholder="Email" name="email" id="email" />
-          </div>
-          <div class="form-field">
-            <label for="address">Role</label>
-            <select name="role" id="">
-              <option value="teacher">Teacher</option>
-              <option value="staff">Staff</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="address">Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              id="password"
-            />
-          </div>
+    <main class="page-shell">
+      <section class="auth-layout">
+        <div class="auth-card">
+          <p class="kicker">Complete registration</p>
+          <h1 class="page-heading">Verify your account.</h1>
+          <form action="/auth/register" method="post">
+            <input type="hidden" name="appNo" value="<%=applicant.app_no%>" />
 
-          <button>Register</button>
-        </form>
-      </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="firstname">Firstname</label>
+                <input
+                  type="text"
+                  placeholder="Firstname"
+                  name="firstname"
+                  id="firstname"
+                  value="<%=applicant ? applicant.firstname : ''%>"
+                  readonly
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="lastname">Lastname</label>
+                <input
+                  type="text"
+                  placeholder="Lastname"
+                  name="lastname"
+                  id="lastname"
+                  value="<%=applicant ? applicant.lastname:''%>"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                id="email"
+                value="<%=applicant ? applicant.email:''%>"
+              />
+            </div>
+
+            <input type="hidden" name="role" value="student" />
+
+            <div class="form-field">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password"
+              />
+            </div>
+
+            <button type="submit">Upload Data</button>
+          </form>
+        </div>
+
+        <div class="auth-card">
+          <div class="form-meta">
+            <h2>One last step</h2>
+            <p>
+              Confirm your personal details and create a secure password to finish
+              setting up your student profile.
+            </p>
+            <p>
+              Your information is used to complete enrollment and keep your
+              application records up to date.
+            </p>
+            <a href="/auth/login" class="inline-link">Already have an account?</a>
+          </div>
+        </div>
+      </section>
     </main>
+
     <%-include("partials/footer")%>
   </body>
 </html>

@@ -6,7 +6,52 @@
 
   <body>
     <%-include("partials/header")%>
-    <h1>Login</h1>
+
+    <main class="page-shell">
+      <section class="auth-layout">
+        <div class="auth-card">
+          <p class="kicker">Welcome back</p>
+          <h1 class="page-heading">Login to your account.</h1>
+          <form action="/auth/login" method="post">
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" placeholder="Email" name="email" id="email" />
+            </div>
+
+            <div class="form-field">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password"
+              />
+            </div>
+
+            <button type="submit">Login</button>
+
+            <div class="form-helper">
+              <span>Need to verify an account?</span>
+              <a href="/check-application" class="inline-link">Verify account</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="auth-card">
+          <div class="form-meta">
+            <h2>Student portal</h2>
+            <p>
+              Access your admissions information, track status updates, and keep
+              your enrollment process moving forward with confidence.
+            </p>
+            <p>
+              New here? Create your account and continue your application journey.
+            </p>
+            <a href="/auth/register" class="btn-secondary">Create account</a>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <%-include("partials/footer")%>
   </body>

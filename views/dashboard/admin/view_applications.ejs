@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+  </head>
+  <body>
+    <%-include("partials/header")%>
+
+    <main class="page-shell">
+      <section class="panel" style="margin-bottom: 1.5rem;">
+        <p class="kicker">Application review</p>
+        <h1 class="page-heading">Manage applications.</h1>
+      </section>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Application No</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Status</th>
+              <th>Registration Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%applicants.forEach((app,i)=>{%>
+            <tr>
+              <td><%= i+1%></td>
+              <td><%= app.app_no%></td>
+              <td><%= app.firstname%></td>
+              <td><%= app.lastname%></td>
+              <td><%= app.email%></td>
+              <td><%= app.address%></td>
+              <td>
+                <span class="status-pill <%= app.status == "approved" ? "status-approved" : app.status == "rejected" ? "status-rejected" : "status-pending" %>">
+                  <%= app.status == "approved" ? "Approved" : app.status == "rejected" ? "Rejected" : "Pending" %>
+                </span>
+              </td>
+              <td><%= app.timestamp%></td>
+              <td>
+                <div class="table-actions">
+                  <a href="/admin/application/view/<%=app.app_no%>">View</a>
+                  <a href="/admin/application/approve/<%=app.app_no%>" class="primary">Approve</a>
+                  <a href="/admin/application/reject/<%=app.app_no%>">Reject</a>
+                </div>
+              </td>
+            </tr>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <%-include("partials/footer")%>
+  </body>
+</html>

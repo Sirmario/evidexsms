@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("partials/head")%>
+  </head>
+  <body>
+    <%-include("partials/header")%>
+
+    <main class="page-shell">
+      <section class="panel" style="margin-bottom: 1.5rem;">
+        <p class="kicker">Users</p>
+        <h1 class="page-heading">System users.</h1>
+      </section>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Registration Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%users.forEach((user,i)=>{%>
+            <tr>
+              <td><%= i+1%></td>
+              <td><%= user.firstname%></td>
+              <td><%= user.lastname%></td>
+              <td><%= user.email%></td>
+              <td>
+                <span class="status-pill <%= user.role == "admin" ? "status-approved" : user.role == "teacher" ? "status-pending" : user.role == "staff" ? "status-rejected" : "status-approved" %>">
+                  <%=user.role%>
+                </span>
+              </td>
+              <td><%= user.timestamp%></td>
+              <td>
+                <div class="table-actions">
+                  <a href="/application/view/<%=user._id%>">View</a>
+                </div>
+              </td>
+            </tr>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <%-include("partials/footer")%>
+  </body>
+</html>
